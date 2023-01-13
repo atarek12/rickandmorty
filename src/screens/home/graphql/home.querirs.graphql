@@ -1,0 +1,16 @@
+query Characters($filter: FilterCharacter, $page: Int) {
+  characters(filter: $filter, page: $page) {
+    info {
+      ...PageInfo
+    }
+    results {
+      ...CharacterBasicInfo
+    }
+  }
+}
+
+query Character($id: ID!) {
+  character(id: $id) {
+    ...CharacterDetailedInfo
+  }
+}

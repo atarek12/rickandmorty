@@ -1,0 +1,45 @@
+fragment PageInfo on Info {
+  count
+  pages
+  next
+  prev
+}
+
+fragment LocationInfo on Location {
+  id
+  name
+  type
+  dimension
+}
+
+fragment EpisodeInfo on Episode {
+  id
+  name
+  air_date
+  episode
+}
+
+fragment CharacterBasicInfo on Character {
+  id
+  name
+  species
+  gender
+  image
+  status
+}
+
+fragment CharacterDetailedInfo on Character {
+  ...CharacterBasicInfo
+
+  origin {
+    ...LocationInfo
+  }
+
+  location {
+    ...LocationInfo
+  }
+
+  episode {
+    ...EpisodeInfo
+  }
+}
