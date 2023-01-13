@@ -1,0 +1,2 @@
+schema: "https://rickandmortyapi.com/graphql"
+documents:   "**/*.{tsx,gql,graphql,js,ts}"

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+.prettierrc.js
+.eslintrc.js
+src/vite-env.d.ts
+vite.config.ts
