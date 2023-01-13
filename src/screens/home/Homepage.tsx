@@ -1,5 +1,6 @@
 import React from "react";
 import { useCharactersQuery } from "../../generated/graphql";
+import ListCharacters from "./components/ListCharacters";
 
 interface HomepageProps {}
 
@@ -10,11 +11,16 @@ const Homepage: React.FC<HomepageProps> = ({}) => {
     return <p>loading...</p>;
   }
 
-  if (error) {
+  if (error || !data) {
     return <p>Error!</p>;
   }
 
-  return <h1>Homepage</h1>;
+  return (
+    <div>
+      <h1>Rick and Morty Characters</h1>
+      <ListCharacters characters={data.characters?.results} />
+    </div>
+  );
 };
 
 export default Homepage;
