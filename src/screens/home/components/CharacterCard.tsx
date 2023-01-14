@@ -8,21 +8,30 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Stack from "@mui/material/Stack";
 import { CharacterBasicInfoFragment } from "../../../generated/graphql";
 import CharacterDetails from "./CharacterDetails";
+import { useBoundStore } from "../../../lib/zustand/store";
 
 interface CharacterCardProps {
   character: CharacterBasicInfoFragment | null | undefined;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+  const opened = useBoundStore((state) => state.opened);
+  const openCharacter = useBoundStore((state) => state.open);
+  const closeCharacter = useBoundStore((state) => state.close);
+
+  const handleChange = (event: React.SyntheticEvent, isExpanded: boolean) => {
+    if (!character?.id) return;
+    isExpanded ? openCharacter(character.id) : closeCharacter(character.id);
+  };
+
   if (!character) {
     return null;
   }
 
   return (
     <Accordion
-      // expanded={}
-      // onChange={}
-      // mount
+      expanded={opened.includes(character.id!)}
+      onChange={handleChange}
       TransitionProps={{ unmountOnExit: true }}
       sx={{ width: 650 }}
     >
