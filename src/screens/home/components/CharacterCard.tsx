@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Stack from "@mui/material/Stack";
 import { CharacterBasicInfoFragment } from "../../../generated/graphql";
+import CharacterDetails from "./CharacterDetails";
 
 interface CharacterCardProps {
   character: CharacterBasicInfoFragment | null | undefined;
@@ -19,8 +20,11 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
   return (
     <Accordion
-    // expanded={}
-    // onChange={}
+      // expanded={}
+      // onChange={}
+      // mount
+      TransitionProps={{ unmountOnExit: true }}
+      sx={{ width: 650 }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Stack direction="row" spacing={2}>
@@ -49,10 +53,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
         </Stack>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-          Aliquam eget maximus est, id dignissim quam.
-        </Typography>
+        <CharacterDetails character={character} />
       </AccordionDetails>
     </Accordion>
   );
