@@ -1,9 +1,14 @@
 import { create } from "zustand";
 import {
   CharactersSlice,
+  SearchAndFilterSlice,
   createCharactersSlice,
-} from "./slices/charactersSlice";
+  createSearchAndFilterSlice,
+} from "./slices";
 
-export const useBoundStore = create<CharactersSlice>()((set, get, api) => ({
-  ...createCharactersSlice(set, get, api),
-}));
+export const useBoundStore = create<CharactersSlice & SearchAndFilterSlice>()(
+  (set, get, api) => ({
+    ...createCharactersSlice(set, get, api),
+    ...createSearchAndFilterSlice(set, get, api),
+  })
+);

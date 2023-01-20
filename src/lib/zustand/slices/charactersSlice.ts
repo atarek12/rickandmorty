@@ -4,9 +4,8 @@ import { CharacterDetailedInfoFragment } from "../../../generated/graphql";
 export interface CharactersSlice {
   characters: CharacterDetailedInfoFragment[];
   opened: string[];
-  page: number | null | undefined;
   addCharacters: (characters: CharacterDetailedInfoFragment[]) => void;
-  updatePage: (page: number | null | undefined) => void;
+  replaceCharacters: (characters: CharacterDetailedInfoFragment[]) => void;
   open: (id: string) => void;
   close: (id: string) => void;
   collapse: () => void;
@@ -20,10 +19,9 @@ export const createCharactersSlice: StateCreator<
 > = (set) => ({
   characters: [],
   opened: [],
-  page: 1,
   addCharacters: (characters) =>
     set((state) => ({ characters: [...state.characters, ...characters] })),
-  updatePage: (page: number | null | undefined) => set(() => ({ page })),
+  replaceCharacters: (characters) => set(() => ({ characters })),
   open: (id: string) => set((state) => ({ opened: [...state.opened, id] })),
   close: (id: string) =>
     set((state) => ({ opened: state.opened.filter((i) => i !== id) })),
