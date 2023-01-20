@@ -29,16 +29,7 @@ module.exports = {
   rules: {
     "react-hooks/rules-of-hooks": "error",
     "prettier/prettier": ["warn", { endOfLine: "auto" }],
-    // "@typescript-eslint/no-explicit-any": "off",
-    // "@typescript-eslint/no-non-null-assertion": "off",
-    // "@typescript-eslint/ban-ts-comment": "off",
-    // "react/prop-types": "off",
-    // "react/react-in-jsx-scope": "off",
-    // "import/no-cycle": "error",
-    // "import/named": "off",
-    // "no-console": "warn",
-    // "@typescript-eslint/no-empty-interface": "off",
-    // "no-empty-pattern": "off",
-    // "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "import/no-cycle": "error",
+    "no-console": "warn",
   },
 };
